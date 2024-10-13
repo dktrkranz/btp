@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Copyright (c) 2018 Luca Falavigna
+# Copyright (c) 2018-2024 Luca Falavigna
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -31,24 +31,45 @@ btp_data = []
 url = 'http://www.borsaitaliana.it'
 site = '{0}/borsa/obbligazioni/mot/btp/lista.html'.format(url)
 header = ('Prezzo ufficiale',
+          'Data prezzo ufficiale',
+          'Indicizzazione',
+          'Apertura',
+          'Volume ultimo',
+          'Volume totale',
+          'Numero contratti',
+          'Min oggi',
+          'Max oggi',
+          'Min anno',
+          'Max anno',
+          'Rendimento effettivo a scadenza lordo',
+          'Rendimento effettivo a scadenza netto',
+          'Rateo lordo',
+          'Rateo netto',
+          'Duration modificata',
+          'Prezzo di riferimento',
+          'Data di riferimento',
+          'Codice ISIN',
+          'Emittente',
+          'Garante',
+          'Subordinazione',
+          'Tipologia',
+          'Struttura bond',
+          'Ammontare emesso',
           'Lotto minimo',
           'Valuta di negoziazione',
-          'Valuta di liquidazione',
-          'Data Ultima Cedola Pagata',
-          'Tasso Prossima Cedola',
-          'Scadenza',
-          'Apertura',
-          'Volume Ultimo',
-          'Volume totale',
-          'Numero Contratti',
-          'Min Oggi',
-          'Max Oggi',
-          'Min Anno',
-          'Max Anno',
-          'Tipo Bond',
-          'Codice Isin',
           'Mercato',
-          'Tipologia')
+          'Clearing & settlement',
+          'Data inizio negoziazione',
+          'Denominazione',
+          'Codice strumento',
+          'Data godimento',
+          'Data stacco prima cedola',
+          'Scadenza',
+          'Periodicità cedola',
+          'Modalità di negoziazione',
+          'Base di calcolo',
+          'Tasso cedola periodale',
+          'Tasso cedola su base annua')
 
 while True:
     data = urlopen(site).read().decode('ISO-8859-1')
