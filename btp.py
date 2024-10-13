@@ -24,6 +24,7 @@
 
 from csv import writer
 from re import findall, DOTALL
+from time import sleep
 from urllib.request import urlopen
 
 btps = []
@@ -74,8 +75,8 @@ header = ('Prezzo ufficiale',
 while True:
     data = urlopen(site).read().decode('ISO-8859-1')
     btps += [url + x for x in findall(
-      '<a href="(/borsa/\S+mot\S+IT\d{10}\S+)"', data)]
-    nextpage = findall('<a href="(\S+)" title="Successiva">', data)
+      r'<a href="(/borsa/\S+mot\S+IT\d{10}\S+)"', data)]
+    nextpage = findall(r'<a href="(\S+)" title="Successiva">', data)
     if nextpage:
         site = url + nextpage[0]
     else:
@@ -85,6 +86,7 @@ for btp in btps:
     btp_data.append([x.strip() for x in
                     findall('<span class="t-text -right">(.*?)</span>',
                             data, DOTALL)])
+    sleep(0.5)
 with open('btp.csv', 'w', newline='') as csvfile:
     f = writer(csvfile, delimiter='|')
     f.writerows([header])
